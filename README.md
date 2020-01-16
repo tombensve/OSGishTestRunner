@@ -2,7 +2,7 @@
 
 This is a bit of code that I have broken out of my APS project and made independent of that project after having someone mailing me asking if this could be used for other projects.
 
-This provides an API to deply an OSGi bundle in a test, thus running it as it would run in reality, but with the exception of modularity. The point here is to run with JUnits classpath (or whatever test framework you are using). Its only for testing functionality.
+This provides an API to deploy an OSGi bundle in a test, thus running it as it would run in reality, but with the exception of modularity. The point here is to run with JUnits classpath (or whatever test framework you are using). Its only for testing functionality.
 
 ## Usage
 
