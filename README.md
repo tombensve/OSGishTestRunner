@@ -44,7 +44,7 @@ The fourth deploys from a list of paths to classes.
 
 The fifth doesn't care about bundle content.
 
-There is a **REALLY BIG NOTE** here: The different ways to specify what to deploy is only to be able to deliver Bundle content!  In my case I use this to do dependency injection using a generic BundleActivator that does the dependency injections. If your bundle never uses this information it does not matter what the content is.  Remember from a bit upp in this document: This does not modularize, this uses JUnit, etc classpath! So any "deployed" bundle must be on test classpath.  The deployment is quite faked. The point is to actually start one or more bundles using their activators, and have events working so that service trackers work.
+There is a **REALLY BIG NOTE** here: The different ways to specify what to deploy is only to be able to deliver Bundle content!  In my case I use this to do dependency injection using a generic BundleActivator that does the dependency injections. If your bundle never uses this information it does not matter what the content is.  Remember from a bit upp in this document: This does not modularize, this uses JUnit, etc classpath! So any "deployed" bundle must be on test classpath.  The deployment is quite faked. _The point is to actually start one or more bundles using their activators, and have events working so that service trackers work._
 
 `from(...)`, `fromJar(jar)`, `using(...)` all end by calling `.start()`. In this version I've made the `start()` method public. In other words, it is possible to skip `from/fromJar/using` and just do `.start()`.
 
