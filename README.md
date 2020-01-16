@@ -1,8 +1,8 @@
 # OSGishTestRunner
 
-This is a bit of code that I have broken out of my APS project and made independent of that project after having someone mailing me asking if this could be used for other projects. 
+This is a bit of code that I have broken out of my APS project and made independent of that project after having someone mailing me asking if this could be used for other projects.
 
-This provides an API to deply an OSGi bundle in a test, thus running it as it would run in reality, but with the exception of modularity. The point here is to run with JUnits classpath (or whatever test framework you are using). Its only for testing functionality. 
+This provides an API to deply an OSGi bundle in a test, thus running it as it would run in reality, but with the exception of modularity. The point here is to run with JUnits classpath (or whatever test framework you are using). Its only for testing functionality.
 
 ## Usage
 
@@ -36,19 +36,19 @@ Since groovy allows for removing dots and parenthesis it can look like this in g
 
 The first  of the four examples deploys a bundle from ~/.m2/repository using maven GAV.
 
-The second deploys from a classpath root . 
+The second deploys from a classpath root .
 
-The third deploys from a jar file. 
+The third deploys from a jar file.
 
 The fourth deploys from a list of paths to classes.
 
 The fifth doesn't care about bundle content.
 
-There is a **REALLY BIG NOTE** here: The different ways to specify what to deploy is only to be able to deliver Bundle content!  In my case I use this to do dependency injection using a generic BundleActivator that does the dependency injections. If your bundle never uses this information it does not matter what the content is.  Remember from a bit upp in this document: This does not modularize, this uses JUnit, etc classpath! So any "deployed" bundle must be on test classpath.  The deployment is quite faked. The point is to actually start one or more bundles using their activators, and have events working so that service trackers work. 
+There is a **REALLY BIG NOTE** here: The different ways to specify what to deploy is only to be able to deliver Bundle content!  In my case I use this to do dependency injection using a generic BundleActivator that does the dependency injections. If your bundle never uses this information it does not matter what the content is.  Remember from a bit upp in this document: This does not modularize, this uses JUnit, etc classpath! So any "deployed" bundle must be on test classpath.  The deployment is quite faked. The point is to actually start one or more bundles using their activators, and have events working so that service trackers work.
 
-`from(...)`, `fromJar(jar)`, `using(...)` all end by calling `.start()`. In this version I've made the `start()` method public. In other words, it is possible to skip `from/fromJar/using` and just do `.start()`. 
+`from(...)`, `fromJar(jar)`, `using(...)` all end by calling `.start()`. In this version I've made the `start()` method public. In other words, it is possible to skip `from/fromJar/using` and just do `.start()`.
 
-To be proper you should do the following in your tests:
+To be proper you should probably do something like this in your tests:
 
     ...
     try {
@@ -56,7 +56,7 @@ To be proper you should do the following in your tests:
     } 
     finally {
         shutdown();
-        hold().maxTime(500).unit(TimeUnit.MILLISECONDS).go() // Give Vertx time to shut down.
+        hold().maxTime(500).unit(TimeUnit.MILLISECONDS).go();
     }
 
 ## (Un)supported OSGi APIs
@@ -93,9 +93,9 @@ Partly supported.
 - installBundle( String location, InputStream input ) -- throws BundleException ( has API for that).
 - installBundle( String location ) -- throws BundleException (OTROSGiServiceTestTools  has API for that).
 - addFrameworkListener( FrameworkListener listener )
-- removeFrameworkListener( FrameworkListener listener ) 
+- removeFrameworkListener( FrameworkListener listener )
 - ungetService( ServiceReference reference ) -- does nothing, always returns true.
-- getDataFile( String filename ) -- Throws RuntimeException. 
+- getDataFile( String filename ) -- Throws RuntimeException.
 
 ### ServiceReference
 
@@ -108,4 +108,4 @@ Partly supported.
 
 ### ServiceRegistration
 
-Fully supported. 
+Fully supported.
