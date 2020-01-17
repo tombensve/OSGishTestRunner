@@ -59,7 +59,7 @@ To be proper you should probably do something like this in your tests:
         hold().maxTime(500).unit(TimeUnit.MILLISECONDS).go();
     }
 
-## (Un)supported OSGi APIs
+## Unsupported OSGi APIs
 
 The following is a list of what is not supported. If anyone adds support for all or part of these, please do a pull request!
 
