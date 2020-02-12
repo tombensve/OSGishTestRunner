@@ -4,6 +4,10 @@ This is a bit of code that I have broken out of my APS project and made independ
 
 This provides an API to deploy an OSGi bundle in a test, thus running it as it would run in reality, but with the exception of modularity. The point here is to run with JUnits classpath (or whatever test framework you are using). Its only for testing functionality.
 
+**DO NOTE that this is just old basic OSGi! It does not support "Declarative Services".** I choose basic OSGi due to its extreme and brilliant simplicity. I can run it in tests due to supplying my own BundleContext that provides the events needed and I can pass my BundleContext to a BundleActivator. Super simple. 
+
+How to make this work with declarative services or if it is even possible i don't know. I hate complexity and love simplicity which is why I consider basic OSGi absolutely brilliant. I made my own solution within that with a generic dependency injecting BundleActivator, which works perectly with basic OSGi.
+
 ## Usage
 
 Let your test class extend OTROSGiServiceTestTools. Then you can do this:
